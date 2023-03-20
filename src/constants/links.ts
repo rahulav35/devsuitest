@@ -1,0 +1,45 @@
+export const sidebarlinks = [
+    {
+        label:"Home",
+        icon:"/homehashtag.svg",
+        activeicon:"/homeselect.svg",
+        path:"/"
+    },
+    {
+        label:"Designs",
+        icon:"/designtools.svg",
+        activeicon:"/designselect.svg",
+        path:"/"
+    },
+    {
+        label:"Message",
+        icon:"/messages1.svg",
+        activeicon:"/messageselect.svg",
+        path:"/"
+    },
+    {
+        label:"Connections",
+        icon:"/global.svg",
+        activeicon:"/connectselect.svg",
+        path:"/"
+    },
+    {
+        label:"Notifications",
+        icon:"/notification1.svg",
+        activeicon:"/notiselect.svg",
+        path:"/"
+    },
+    {
+        label:"Marketplace",
+        icon:"/shop.svg",
+        activeicon:"/marketselect.svg",
+        path:"/"
+    }
+,
+    {
+        label:"Settings",
+        icon:"/setting.svg",
+        activeicon:"/settingselect.svg",
+        path:"/"
+    }
+]

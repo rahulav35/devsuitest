@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import About from "@/component/About";
 import Event from "@/component/Event";
 import Post from "@/component/Post";
@@ -20,7 +21,7 @@ function index() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <div className="h-[90%] w-[90%] rounded-lg flex items-center justify-between mt-5   ">
-          <section className="min-h-[100%] w-[63%] flex flex-col justify-start items-center rounded-lg   ">
+          <section className="min-h-[100%] w-[63%] flex flex-col justify-start items-center rounded-lg ">
             <div className="h-[105px] w-[100%] bg-[#121212] flex flex-col items-center justify-evenly rounded-lg">
               <div className="h-[40px] w-[90%] flex items-center justify-between border-[2px] border-[#2d2b2b] rounded-3xl mt-2 ">
                 <input

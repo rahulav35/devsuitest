@@ -10,8 +10,8 @@ type props = {
 
 function Post({ image }: props) {
   return (
-    <div className="min-h-[45%] w-[100%] mt-2  rounded-lg flex items-start justify-evenly flex-col bg-[#121212] ">
-      <div className="h-[60px] w-[100%] flex justify-evenly items-center ">
+    <div className="max-h-[500px] w-[100%] mt-2  rounded-lg flex items-start justify-start flex-col bg-[#121212] overflow-y-scroll overflow-x-hidden scrollbar-hide ">
+      <div className="h-[60px] w-[100%] flex justify-evenly items-center mt-2">
         <div className="h-[46px] w-[46px] rounded-full border-[2px] border-blue-800"></div>
         <div className="h-[100%] w-[70%] flex flex-col justify-evenly items-start  -ml-7">
           <span className="text-lg text-white font-medium ">
@@ -36,19 +36,14 @@ function Post({ image }: props) {
         Hey there We are hiring! Join our team as a software developer and help
         us build innovative solutions that make a difference in peoples lives.
         us build innovative solutions that make a difference in peoples lives.
-      </p>
-
-      <div className="min-h-[100px] min-w-[100px] ml-11">
-        {" "}
-        {image && (
-          <img
-            className="h-[200px] w-[200px] object-cover"
-            src="/logo.jpg"
-            alt=""
-          />
-        )}
-      </div>
-
+      </p>{" "}
+      {image && (
+        <img
+          className="h-[500px] w-[500px] object-cover ml-11"
+          src="/logo.jpg"
+          alt=""
+        />
+      )}
       <h1 className="text-xs text-white font-normal ml-11 mt-2">100 Likes</h1>
       <div className="h-[1px] w-[63%] bg-[#ffffff47] ml-28 my-3"></div>
       <div className="h-[40px] w-[85%] flex items-center justify-start ml-4 mb-2 ">

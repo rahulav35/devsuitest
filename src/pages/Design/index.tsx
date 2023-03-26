@@ -8,7 +8,7 @@ function Index() {
     <Mainlayout>
       <div className="h-[100vh] w-[100vw] flex justify-center items-center  ">
         <div className="w-[90%] h-[86%]  flex flex-col justify-start items-center ">
-          <div className="w-[100%] h-[12%] flex flex-row items-start justify-between ">
+          <div className="w-[100%] h-[12%] flex flex-row items-start justify-between px-[30px]">
             <SearchBar />
             <div className="w-[150px] h-[50px] bg-gradient-to-r from-[#14D3DB] to-[#0057FF] flex flex-row items-center justify-center rounded-[20px] ">
               <h1 className="font-semibold text-[17px] text-[#FFFFFF]">
@@ -16,7 +16,7 @@ function Index() {
               </h1>
             </div>
           </div>
-          <div className="w-full h-[88%] grid  grid-cols-3 gap-y-9  gap-x-24 overflow-y-scroll scrollbar-hide  place-content-between place-items-center">
+          <div className="w-full h-[88%] grid  grid-cols-3 gap-y-9  gap-x-17 overflow-y-scroll scrollbar-hide  place-content-between place-items-center">
             <Card
               image="/Rectangle 49.svg"
               designName="Mobile App Design"

@@ -1,45 +1,45 @@
 export const sidebarlinks = [
     {
         label:"Home",
-        icon:"/homehashtag.svg",
-        activeicon:"/homeselect.svg",
+        icon:"/home-in.svg",
+        activeicon:"/home.svg",
         path:"/"
     },
     {
         label:"Designs",
-        icon:"/designtools.svg",
-        activeicon:"/designselect.svg",
-        path:"/"
+        icon:"/design-in.svg",
+        activeicon:"/design.svg",
+        path:"/Design"
     },
     {
         label:"Message",
-        icon:"/messages1.svg",
-        activeicon:"/messageselect.svg",
+        icon:"/message-in.svg",
+        activeicon:"/message.svg",
         path:"/"
     },
     {
         label:"Connections",
-        icon:"/global.svg",
-        activeicon:"/connectselect.svg",
-        path:"/"
+        icon:"/network-in.svg",
+        activeicon:"/network.svg",
+        path:"/connections"
     },
     {
         label:"Notifications",
-        icon:"/notification1.svg",
-        activeicon:"/notiselect.svg",
+        icon:"/notification-in.svg",
+        activeicon:"/notifications.svg",
         path:"/"
     },
     {
         label:"Marketplace",
-        icon:"/shop.svg",
-        activeicon:"/marketselect.svg",
+        icon:"/market-in.svg",
+        activeicon:"/market.svg",
         path:"/"
     }
 ,
     {
         label:"Settings",
-        icon:"/setting.svg",
-        activeicon:"/settingselect.svg",
+        icon:"/settings-in.svg",
+        activeicon:"/settings.svg",
         path:"/"
     }
 ]

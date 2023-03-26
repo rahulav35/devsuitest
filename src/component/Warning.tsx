@@ -15,7 +15,7 @@ function Warning() {
         </h2>
       </div>
       <Image
-        className="-mt-16 mr-2"
+        className="-mt-14 mr-2"
         width={25}
         height={25}
         src="/x.svg"

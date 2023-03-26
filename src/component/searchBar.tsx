@@ -3,7 +3,7 @@ import { BsSearch } from "react-icons/bs";
 
 function SearchBar() {
   return (
-    <div className="w-[530px] h-[50px] bg-[#121212] flex flex-row items-center justify-between border border-[#FFFFFF] rounded-[30px] px-[7px]">
+    <div className="w-[500px] h-[55px] bg-[#121212] flex flex-row items-center justify-between  border-[2px] border-[#ffffff16] rounded-[30px] px-[7px]">
       <input
         type="text"
         placeholder="Search here..."

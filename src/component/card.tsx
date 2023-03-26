@@ -9,7 +9,7 @@ type props = {
 
 function Card({ image, designName, userName }: props) {
   return (
-    <div className="w-[303px] h-[363px] bg-[#121212] flex flex-col justify-start items-center rounded-[20px] p-[20px] ">
+    <div className="w-[303px] h-[363px] bg-[#121212] flex flex-col justify-start items-center border-[2px] border-[#ffffff16] rounded-[20px] p-[20px] ">
       <Image className="w-full " width={30} height={30} src={image} alt="" />
       <div className="w-full h-full  flex flex-col justify-center items-start bg-[#121212]">
         <h1 className="text-[#FFFFFF] text-[20px] font-semibold">

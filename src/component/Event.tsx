@@ -6,11 +6,15 @@ type props = {
   image: string;
   width: number;
   height: number;
+  onClick?: () => void;
 };
 
-function Event({ text, image, height, width }: props) {
+function Event({ text, image, height, width, onClick }: props) {
   return (
-    <div className="h-[35px] w-[85px] bg-[#1E1E1E] flex items-center justify-evenly rounded-xl">
+    <div
+      onClick={onClick}
+      className="h-[33px] w-[85px] border-[3px] border-[#2d2b2b] flex items-center justify-evenly rounded-xl"
+    >
       <Image width={width} height={height} src={image} alt="" />
       <h1 className="text-sm text-white">{text}</h1>
     </div>

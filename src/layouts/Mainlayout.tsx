@@ -3,7 +3,7 @@ import React from "react";
 
 function Mainlayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="h-[100vh] w-[100vw] flex items-center justify-center xl2000:px-[260px] xl1900:px-[250px] xl1700:px-[150px] xl1550:px-[90px] xl">
+    <div className="h-[100vh] w-[100vw] flex items-center justify-center lg1200:pl-[3%] lg1300:pl-[4%] xl1400:pl-[4%] xl1500:pl-[5%] xl1600:pl-[6%] xl xl1900:pl-[7%] xl2200:pl-[7%] xl2500:pl-[8%] xl3050:pl-[9%] ">
       <Sidebar />
       {children}
     </div>

@@ -6,13 +6,14 @@ import Sidebaritems from "./Sidebaritems";
 function Sidebar() {
   const router = useRouter();
   return (
-    <div className="h-[86%] min-w-[240px] flex flex-col items-center justify-between border-[2px] border-[#ffffff1b] bg-[#121212d3] rounded-2xl ml-14  ">
-      <div className="h-[62%] w-[100%] flex flex-col items-start justify-evenly  mt-5 ">
+    <div className="h-[86%] min-w-[240px] flex flex-col items-center justify-between border-[2px] border-[#ffffff1b] bg-[#121212d3] rounded-2xl ml-16  ">
+      <div className="h-[62%] w-[100%] flex flex-col items-start justify-evenly text-gray-300 mt-5 ">
         {sidebarlinks.map((item, i) => (
           <Sidebaritems
             key={i}
             text={item.label}
-            image={item.icon}
+            image={router.pathname === item.path ? item.activeicon : item.icon}
+            active={router.pathname === item.path}
             onClick={() => router.push(item.path)}
           />
         ))}

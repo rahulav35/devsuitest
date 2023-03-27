@@ -15,7 +15,7 @@ export const sidebarlinks = [
         label:"Message",
         icon:"/message-in.svg",
         activeicon:"/message.svg",
-        path:"/"
+        path:"#"
     },
     {
         label:"Connections",
@@ -25,21 +25,21 @@ export const sidebarlinks = [
     },
     {
         label:"Notifications",
-        icon:"/notification-in.svg",
-        activeicon:"/notifications.svg",
-        path:"/"
+        icon:"/notifi-in.svg",
+        activeicon:"/notification-act.svg",
+        path:"#"
     },
     {
         label:"Marketplace",
         icon:"/market-in.svg",
         activeicon:"/market.svg",
-        path:"/"
+        path:"#"
     }
 ,
     {
         label:"Settings",
         icon:"/settings-in.svg",
         activeicon:"/settings.svg",
-        path:"/"
+        path:"#"
     }
 ]

@@ -21,6 +21,7 @@ import React, {
 
 function Index() {
   const { isCreateModelVisible, setIsCreateModelVisible } = useAppContext();
+  const { postType, setPostType } = useAppContext();
 
   return (
     <Mainlayout>
@@ -54,16 +55,37 @@ function Index() {
                   text="Post"
                   height={22}
                   width={22}
-                  onClick={() => setIsCreateModelVisible(true)}
+                  onClick={() => (
+                    setIsCreateModelVisible(true), setPostType("ordinary")
+                  )}
                 />
                 <Event
                   image="/gallery.svg"
                   text="Home"
                   height={22}
                   width={22}
+                  onClick={() => (
+                    setIsCreateModelVisible(true), setPostType("image")
+                  )}
                 />
-                <Event image="/work.svg" text="Work" height={20} width={20} />
-                <Event image="/Event.svg" text="Event" height={17} width={17} />
+                <Event
+                  image="/work.svg"
+                  text="Work"
+                  height={20}
+                  width={20}
+                  onClick={() => (
+                    setIsCreateModelVisible(true), setPostType("work")
+                  )}
+                />
+                <Event
+                  image="/Event.svg"
+                  text="Event"
+                  height={17}
+                  width={17}
+                  onClick={() => (
+                    setIsCreateModelVisible(true), setPostType("event")
+                  )}
+                />
               </div>
             </div>
             <Post />

@@ -169,6 +169,8 @@ function Createpost() {
         </div>
       </div>
     );
+  } else {
+    return <div />;
   }
 }
 

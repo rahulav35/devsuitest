@@ -4,6 +4,7 @@ import React from "react";
 import { MdOutlineCancel } from "react-icons/md";
 import Addphotos from "./Addphotos";
 import Addpost from "./Addpost";
+import Jobrole from "./Jobrole";
 
 function Createpost() {
   const { setIsCreateModelVisible } = useAppContext();
@@ -121,7 +122,7 @@ function Createpost() {
   } else if (postType === "work") {
     return (
       <div className=" h-[100vh] w-[100vw] text-white flex justify-center items-center fixed top-0 left-0">
-        <div className="h-[60%] w-[32%] rounded-3xl bg-[#121212]  border-[3px] border-[#2d2b2b] flex flex-col justify-start items-center mr-28 mt-8">
+        <div className="h-[60%] w-[32%] rounded-3xl bg-[#121212]  border-[3px] border-[#2d2b2b] flex flex-col justify-between items-center mr-28 mt-8">
           <div className="h-[40px] w-[100%] flex justify-center items-center relative ">
             <h1 className="text-white text-xl font-medium    m-auto ">
               Create Post
@@ -133,28 +134,22 @@ function Createpost() {
               alt=""
             />
           </div>
-          <div className="bg-[#ffffff4f] w-[100%] h-[1px]"></div>
-          <div className="h-[60px] w-[100%] flex justify-start items-center ml-10">
+          <div className="bg-[#ffffff4f] w-[100%] h-[1px] -mt-10"></div>
+          <div className="h-[60px] w-[100%] flex justify-start items-center ml-10 -mt-10">
             <div className="h-[40px] w-[40px] rounded-full border-[2px] border-blue-800"></div>
 
             <span className="text-md text-white font-medium ml-3 ">
               Amal Raj{" "}
             </span>
           </div>
-          <h1 className="text-sm text-[#ffffff96] -ml-[60%] my-1 tracking-wide">
+          <h1 className="text-sm text-[#ffffff96] -ml-[60%] my-1 tracking-wider -mt-10">
             Details about the job
           </h1>
-
-          <div className="h-[35px] w-[140px] rounded-lg bg-[#1d0808fb] -ml-[60%] my-2 flex justify-between items-center px-2 box-border ">
-            <h1 className=" text-xs text-[#ffffff96] tracking-tight">
-              Select job role
-            </h1>
-            <img className="h-[19px] w-[19px]" src="arrowdown2.svg" alt="" />
-          </div>
+          <Jobrole classname=" z-[100] absolute top-[38%] left-[32%]" />
 
           <Addphotos />
 
-          <div className="h-[49px] w-[90%] rounded-3xl  border-[3px] border-[#2d2b2b] bg-[#121212f8] flex items-center justify-between mt-3 ">
+          <div className="h-[49px] w-[90%] rounded-3xl  border-[3px] border-[#2d2b2b] bg-[#121212f8] flex items-center justify-between mb-2 ">
             <h1 className="text-sm text-[#ffffff96] ml-3 ">Add your post</h1>
             <div className="h-[45px] w-[230px] flex items-center justify-evenly ">
               <Addpost height={25} width={25} Image="post.svg" />

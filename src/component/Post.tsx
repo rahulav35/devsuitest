@@ -3,6 +3,8 @@ import Image from "next/image";
 import { type } from "os";
 import React from "react";
 
+import CommentSection from "./CommentSection";
+
 import Likes from "./Likes";
 type props = {
   image?: string;
@@ -51,6 +53,7 @@ function Post({ image }: props) {
         <Likes image="/Comment.svg" text="Comment" />
         <Likes image="/Share.svg" text="Share" />
       </div>
+      <CommentSection />
     </div>
   );
 }

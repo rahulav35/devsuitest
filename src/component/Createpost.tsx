@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { useAppContext } from "@/contexts/Appcontext";
-import React from "react";
+import React, { useState } from "react";
 import { MdOutlineCancel } from "react-icons/md";
 import Addphotos from "./Addphotos";
 import Addpost from "./Addpost";
@@ -9,6 +9,14 @@ import Jobrole from "./Jobrole";
 function Createpost() {
   const { setIsCreateModelVisible } = useAppContext();
   const { postType } = useAppContext();
+  const [roleselect, setRoleselect] = useState<any[]>([]);
+  function role(post: string) {
+    if (!roleselect.includes(post)) {
+      setRoleselect([...roleselect, post]);
+    } else {
+      setRoleselect(roleselect.filter((item) => item !== post));
+    }
+  }
   if (postType === "ordinary") {
     return (
       <div className=" h-[100vh] w-[100vw] text-white flex justify-center items-center fixed top-0 left-0">
@@ -145,7 +153,11 @@ function Createpost() {
           <h1 className="text-sm text-[#ffffff96] -ml-[60%] my-1 tracking-wider -mt-10">
             Details about the job
           </h1>
-          <Jobrole classname=" z-[100] absolute top-[38%] left-[32%]" />
+          <Jobrole
+            classname=" z-[100] absolute top-[38%] left-[32%]"
+            roleselect={roleselect}
+            toggle={role}
+          />
 
           <Addphotos />
 

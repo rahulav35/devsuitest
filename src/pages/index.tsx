@@ -88,7 +88,7 @@ function Index() {
                 />
               </div>
             </div>
-            <Post />
+            <Post image="logo.svg" />
           </section>
           <section className="h-[100%] w-[33%] flex flex-col justify-start items-center rounded-lg ml-3  ">
             <div className="min-h-[280px] w-[95%] flex items-center justify-evenly flex-col border-[2px] border-[#2d2b2b] rounded-lg bg-[#121212cf] ">

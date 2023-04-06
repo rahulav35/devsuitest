@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
 import { type } from "os";
-import React from "react";
+import React, { useState } from "react";
 
 import CommentSection from "./CommentSection";
 
@@ -11,8 +11,30 @@ type props = {
 };
 
 function Post({ image }: props) {
+  const [commenthandle, setCommenthandle] = useState([
+    {
+      id: "abcdefghi",
+      commentor: "Pranav t v",
+      comment: "hei shitsu",
+      commentedat: "time",
+      replies: [
+        {
+          id: "abcdefghi",
+          commentor: "Pranav t v",
+          comment: "hei shitsu",
+          commentedat: "time",
+        },
+        {
+          id: "abcdefghi",
+          commentor: "Pranav t v",
+          comment: "hei shitsu",
+          commentedat: "time",
+        },
+      ],
+    },
+  ]);
   return (
-    <div className="max-h-[500px] w-[100%] mt-2  rounded-lg flex items-start justify-start flex-col bg-[#121212] overflow-y-scroll overflow-x-hidden scrollbar-hide ">
+    <div className="max-h-[75vh] min-h-[40vh] w-[100%] mt-2  rounded-lg flex items-start justify-start flex-col bg-[#121212] overflow-y-scroll overflow-x-hidden scrollbar-hide">
       <div className="h-[60px] w-[100%] flex justify-evenly items-center mt-2">
         <div className="h-[46px] w-[46px] rounded-full border-[2px] border-blue-800"></div>
         <div className="h-[100%] w-[70%] flex flex-col justify-evenly items-start  -ml-7">
@@ -41,8 +63,8 @@ function Post({ image }: props) {
       </p>{" "}
       {image && (
         <img
-          className="h-[500px] w-[500px] object-cover ml-11"
-          src="/logo.jpg"
+          className=" w-[500px] object-cover ml-11"
+          src="/gallery.svg"
           alt=""
         />
       )}
@@ -53,7 +75,7 @@ function Post({ image }: props) {
         <Likes image="/Comment.svg" text="Comment" />
         <Likes image="/Share.svg" text="Share" />
       </div>
-      <CommentSection />
+      <CommentSection setComments={setCommenthandle} comments={commenthandle} />
     </div>
   );
 }

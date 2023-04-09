@@ -48,7 +48,7 @@ function Comment({
         </div>
       </div>
 
-      {replies?.map((item, i) => (
+      {/* {replies?.map((item, i) => (
         <div
           key={i}
           className="min-h-[50px] w-[70%] flex justify-start items-center ml-44 my-2"
@@ -76,7 +76,7 @@ function Comment({
             </div>
           </div>
         </div>
-      ))}
+      ))} */}
     </div>
   );
 }

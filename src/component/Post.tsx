@@ -6,6 +6,8 @@ import React, { useState } from "react";
 import CommentSection from "./CommentSection";
 
 import Likes from "./Likes";
+import LikeSection from "./LikeSection";
+
 type props = {
   image?: string;
 };
@@ -63,7 +65,7 @@ function Post({ image }: props) {
       </p>{" "}
       {image && (
         <img
-          className=" w-[500px] object-cover ml-11"
+          className=" w-[200px] object-cover ml-11"
           src="/gallery.svg"
           alt=""
         />
@@ -76,6 +78,7 @@ function Post({ image }: props) {
         <Likes image="/Share.svg" text="Share" />
       </div>
       <CommentSection setComments={setCommenthandle} comments={commenthandle} />
+      <LikeSection />
     </div>
   );
 }

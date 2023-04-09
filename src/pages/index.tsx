@@ -61,7 +61,7 @@ function Index() {
                 />
                 <Event
                   image="/gallery.svg"
-                  text="Home"
+                  text="Photos"
                   height={22}
                   width={22}
                   onClick={() => (

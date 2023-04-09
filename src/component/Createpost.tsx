@@ -5,9 +5,12 @@ import { MdOutlineCancel } from "react-icons/md";
 import Addphotos from "./Addphotos";
 import Addpost from "./Addpost";
 import Jobrole from "./Jobrole";
+import { Checkbox } from "@mui/material";
+import pink from "@mui/material/colors/pink";
 
 function Createpost() {
   const { setIsCreateModelVisible } = useAppContext();
+  const[checked,setChecked] = useState(false);
   const { postType } = useAppContext();
   const [roleselect, setRoleselect] = useState<any[]>([]);
   function role(post: string) {
@@ -99,12 +102,19 @@ function Createpost() {
           <Addphotos />
 
           <div className="flex items-center my-2 -ml-[60%]">
-            <input
-              id="default-checkbox"
-              type="checkbox"
-              value=""
-              className="h-[16px] w-[16px] rounded-xl  accent-amber-600 focus:ring-blue-300 focus:ring-[1px]"
-            />
+          <Checkbox
+  checked={checked}
+  onChange={(e)=> {
+    setChecked(e.target.checked)
+  }}
+  sx={{
+    color: pink[800],
+    '&.Mui-checked': {
+      color: pink[600],
+    },
+  }}
+  inputProps={{ 'aria-label': 'controlled' }}
+/>
             <label
               htmlFor="default-checkbox"
               className="ml-4 text-sm  text-white"

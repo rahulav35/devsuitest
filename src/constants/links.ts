@@ -15,7 +15,7 @@ export const sidebarlinks = [
         label:"Message",
         icon:"/message-in.svg",
         activeicon:"/message.svg",
-        path:"#"
+        path:"/messages"
     },
     {
         label:"Connections",

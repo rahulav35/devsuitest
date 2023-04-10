@@ -107,12 +107,7 @@ function Createpost() {
   onChange={(e)=> {
     setChecked(e.target.checked)
   }}
-  sx={{
-    color: pink[800],
-    '&.Mui-checked': {
-      color: pink[600],
-    },
-  }}
+ 
   inputProps={{ 'aria-label': 'controlled' }}
 />
             <label

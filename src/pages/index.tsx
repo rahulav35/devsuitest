@@ -10,7 +10,7 @@ import { useAppContext } from "@/contexts/Appcontext";
 import Mainlayout from "@/layouts/Mainlayout";
 import Head from "next/head";
 import Image from "next/image";
-import { type } from "os";
+
 import React, {
   Children,
   Dispatch,

@@ -2,51 +2,52 @@ import Conversations from "@/component/Conversations";
 import InboxMessages from "@/component/InboxMessages";
 import Inputsection from "@/component/Inputsection";
 import Mainlayout from "@/layouts/Mainlayout";
-import Axios  from "../../config/AxioConfig";
+import Axios from "../../config/AxioConfig";
 import { Props } from "emoji-picker-react";
 import { Message } from "iconsax-react";
 import { type } from "os";
 import React, { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
+import axios from "axios";
 
 function Messages() {
   const [messagetext, setmessageText] = useState<string>("");
 
   const [messageHandle, setMessageHandle] = useState<any[]>([]);
 
-  function sendMessage(e: any) {
+  async function sendMessage(e: any) {
     e.preventDefault();
     if (messagetext.trim().length !== 0) {
-      setMessageHandle([
-        ...messageHandle,
-        {
-          id: (Math.random() * 1e18).toString(),
-          message: messagetext,
-        },
-      ]);
-      setmessageText("");
+      // setMessageHandle([
+      //   ...messageHandle,
+      //   {
+      //     id: (Math.random() * 1e18).toString(),
+      //     message: messagetext,
+      //   },
+      // ]);
+      const response = await Axios.post("/api/messages/940363293317053200", {
+        createdAt: Date.now(),
+        desc: messagetext,
+      });
+      const data = await response.data;
+      if (data) {
+        setmessageText("");
+        fetchData();
+      }
     }
   }
 
   async function fetchData() {
-   try {
-    const response = await Axios.get("/api/messages/940363293317053200")
-    const data = await response.data
-    // console.log(response)
-
-    
-   } catch (error) {
-    
-    console.log(error)
-   }
-  
+    try {
+      const response = await Axios.get("/api/messages/940363293317053200");
+      const data = await response.data;
+      setMessageHandle(data);
+    } catch (error) {}
   }
 
   useEffect(() => {
-    
-    // fetchData()
-  }, [])
-  
+    fetchData();
+  }, []);
 
   return (
     <Mainlayout>
@@ -89,49 +90,34 @@ function Messages() {
               className="h-[470px] w-[100%] bg-[#121212] overflow-y-scroll scrollbar-hide
      flex flex-col-reverse justify-start items-center"
             >
-
-
-
-
-
-<InfiniteScroll className=" w-[45vw] flex flex-col relative "
-  dataLength={messageHandle.length} //This is important field to render the next data
-  next={fetchData}
-  hasMore={true}
-  loader={null}
-  endMessage={
-    <p style={{ textAlign: 'center' }}>
-      <b>Yay! You have seen it all</b>
-    </p>
-  }
-  // below props only if you need pull down functionality
-  refreshFunction={()=> null}
-  pullDownToRefresh
-  pullDownToRefreshThreshold={50}
-  pullDownToRefreshContent={null}
-  releaseToRefreshContent={null}
->
-{messageHandle.map((message, i) => {
-                return (
-                  <InboxMessages
-                    iscurrentuser={i % 2 === 0 ? true : false}
-                    message={message.message}
-                  />
-                );
-              })}
-</InfiniteScroll>
-
-
-
-
-
-
-
-
-
-
-
-              
+              <InfiniteScroll
+                className=" w-[45vw] flex flex-col relative "
+                dataLength={messageHandle.length} //This is important field to render the next data
+                next={fetchData}
+                hasMore={true}
+                loader={null}
+                endMessage={
+                  <p style={{ textAlign: "center" }}>
+                    <b>Yay! You have seen it all</b>
+                  </p>
+                }
+                // below props only if you need pull down functionality
+                refreshFunction={() => null}
+                pullDownToRefresh
+                pullDownToRefreshThreshold={50}
+                pullDownToRefreshContent={null}
+                releaseToRefreshContent={null}
+              >
+                {messageHandle.map((message, i) => {
+                  return (
+                    <InboxMessages
+                      key={i}
+                      iscurrentuser={i % 2 === 0 ? true : false}
+                      message={message.desc}
+                    />
+                  );
+                })}
+              </InfiniteScroll>
             </div>
 
             <div className="h-[55px] w-[100%] border-t-[2px] border-[#ffffff18] flex justify-center items-center bg-[#121212] rounded-b-2xl ">

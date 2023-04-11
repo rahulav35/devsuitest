@@ -51,7 +51,7 @@ function CommentSection({ comments, setComments }: props) {
             size={30}
           />
 
-          <div className="h-[45px] w-[50px] flex items-center justify-evenly  ">
+          <div className="h-[45px] w-[50px] flex items-center justify-evenly   ">
             <div
               onClick={() => {
                 if (Object.keys(selectedComment).length !== 0) {
@@ -106,7 +106,7 @@ function CommentSection({ comments, setComments }: props) {
           />
         </div>
       )}
-      <div className=" min-h-[70px]  w-[87%] flex flex-col justify-start items-center ">
+      <div className=" min-h-[70px]  w-[87%] flex flex-col justify-start items-center  ">
         {" "}
         {comments.map((item, i) => (
           <Comment

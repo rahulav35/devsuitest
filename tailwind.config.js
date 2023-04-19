@@ -66,6 +66,16 @@ module.exports = {
         xl3000: "3000px",
         xl3050: "3050px",
       },
+      fontFamily:{
+        averia :["Averia Sans Libre", "cursive"]
+      },
+      backgroundImage : {
+        BgImg : "url(/bg.svg)"
+      },
+      colors: {
+        "black-low-opacity": "rgba(0,0,0,0.5)"
+      }
+    
     },
   },
   plugins: [require("tailwind-scrollbar-hide")],

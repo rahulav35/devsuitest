@@ -13,7 +13,7 @@ function Jobrole({ classname, roleselect, toggle }: props) {
 
   return (
     <div
-      className={`${classname} min-h-[38px] w-[160px] flex flex-col justify-start items-center my-2`}
+      className={`${classname} min-h-[38px] w-[160px] flex flex-col justify-start items-center `}
     >
       <div
         onClick={() => setShowjobrole(!showjobrole)}

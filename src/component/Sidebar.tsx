@@ -2,8 +2,10 @@ import { sidebarlinks } from "@/constants/links";
 import { useRouter } from "next/router";
 import React from "react";
 import Sidebaritems from "./Sidebaritems";
+import { useAppContext } from "@/contexts/Appcontext";
 
 function Sidebar() {
+  const {user}= useAppContext()
   const router = useRouter();
   return (
     <div className="h-[86%] min-w-[240px] flex flex-col items-center justify-between border-[2px] border-[#ffffff1b] bg-[#121212d3] rounded-2xl ml-16  ">
@@ -20,7 +22,7 @@ function Sidebar() {
       </div>
       <div className="h-[70px] w-[100%] flex items-center justify-start mb-5 ">
         <div className="h-[50px] w-[50px] rounded-full border-2 border-white ml-9"></div>
-        <span className="ml-2 text-white font-semibold text-sm">User</span>
+        <span className="ml-2 text-white font-semibold text-sm">{user.name??"#####"}</span>
       </div>
     </div>
   );

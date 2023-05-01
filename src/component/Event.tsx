@@ -13,10 +13,10 @@ function Event({ text, image, height, width, onClick }: props) {
   return (
     <div
       onClick={onClick}
-      className="h-[33px] w-[85px] border-[3px] border-[#2d2b2b] flex items-center justify-evenly rounded-xl"
+      className="h-[33px] w-[85px] border-[2px] border-[#2d2b2b] flex items-center justify-evenly rounded-xl"
     >
       <Image width={width} height={height} src={image} alt="" />
-      <h1 className="text-sm text-white">{text}</h1>
+      <h1 className="text-[13px] text-white">{text}</h1>
     </div>
   );
 }

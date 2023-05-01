@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Input from "@mui/material/Input";
 import InputLabel from "@mui/material/InputLabel";
@@ -8,9 +8,77 @@ import TextField from "@mui/material/TextField";
 import { HomeTrendDown } from "iconsax-react";
 import { light } from "@mui/material/styles/createPalette";
 import AccountCircle from '@mui/icons-material/AccountCircle';
+import Axios from "../../config/AxioConfig";
+import { useRouter } from 'next/router'
+import { useConnectModal, useAccountModal } from "@rainbow-me/rainbowkit";
+import { useAccount } from "wagmi";
+import { type } from "os";
+import { useAppContext } from "@/contexts/Appcontext";
+
+type authenticationtype = 
+  "login"|"Signup"
+
 
 
 function Signup() {
+
+  const{user,setUser}=useAppContext()
+
+  const [authtype,setAuthtype]= useState<authenticationtype>("login")
+
+  const [name, setName] = useState("")
+  const [username, setUsername] = useState("")
+  const [email, setEmail] = useState("")
+ 
+
+  useEffect(() => {
+    if (isConnected&& address && authtype==="login") {
+       login()
+      
+    }
+
+  })
+
+  const {address,isConnected}= useAccount()
+
+  
+  const router = useRouter()
+  
+  const handleSignUp= async()=> {
+
+    setAuthtype("Signup")
+    
+    const response =await Axios.post("/api/auth",{
+      name: name,
+      username : username,
+
+      email: email,
+      
+      walletAddress:address
+    }
+    );
+
+    const data = await response.data;
+    console.log(data)
+    setUser({name:data.name, username:data.username,email:data.email,waletaddress:data.walletAddress})
+    
+
+    if (data.walletAddress) { router.push("/uploadinfo")
+      
+    } 
+    
+  }
+
+   const login= async()=> {
+    const response = await Axios.post("/api/auth/login",{
+      walletAddress:address
+    })
+
+    const data = await response.data
+    setUser({name:data.name, username:data.username,email:data.email,waletaddress:data.walletAddress})
+  }
+
+  const { openConnectModal } = useConnectModal();
   return (
     <div className="grid grid-cols-2 ">
       <div className="flex flex-col h-screen bg-BgImg  items-center justify-center ">
@@ -35,7 +103,7 @@ function Signup() {
      \
        <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
         <img className="h-[20px] w-[20px] mx-3" src="/user.svg" alt="" />
-        <TextField id="input-with-sx" label="Name" variant="standard" sx={{ borderBottom: "1px solid #ffffff"}} InputLabelProps={{sx:{color:"#ffffff", textTransform: "capitalize", }}}   InputProps={{
+        <TextField onChange={(e)=> setName (e.target.value )} id="input-with-sx" label="Name" variant="standard" sx={{ borderBottom: "1px solid #ffffff"}} InputLabelProps={{sx:{color:"#ffffff", textTransform: "capitalize", }}}   InputProps={{
         style: {
           color: 'white', 
           borderBottomColor:'white'
@@ -44,7 +112,7 @@ function Signup() {
       </Box>
       <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
         <img className="h-[23px] w-[23px] mx-3" src="/useroctagon.svg" alt="" />
-        <TextField id="input-with-sx" label="Username" variant="standard" sx={{ borderBottom: "1px solid #ffffff"}} InputLabelProps={{sx:{color:"#ffffff", textTransform: "capitalize", }}}   InputProps={{
+        <TextField onChange={ (e)=> setUsername(e.target.value)} id="input-with-sx" label="Username" variant="standard" sx={{ borderBottom: "1px solid #ffffff"}} InputLabelProps={{sx:{color:"#ffffff", textTransform: "capitalize", }}}   InputProps={{
         style: {
           color: 'white', 
           borderBottomColor:'white'
@@ -53,7 +121,7 @@ function Signup() {
       </Box>
       <Box sx={{ display: 'flex', alignItems: 'flex-end' ,  }}>
        <img className="h-[22px] w-[22px] mx-3 " src="/sms.svg" alt="" />
-       <TextField id="input-with-sx" label="Email" variant="standard" sx={{ borderBottom: "1px solid #ffffff"}} InputLabelProps={{sx:{color:"#ffffff", textTransform: "capitalize", }}}   InputProps={{
+       <TextField onChange={ (e)=> setEmail(e.target.value)} id="input-with-sx" label="Email" variant="standard" sx={{ borderBottom: "1px solid #ffffff"}} InputLabelProps={{sx:{color:"#ffffff", textTransform: "capitalize", }}}   InputProps={{
         style: {
           color: 'white', 
           borderBottomColor:'white'
@@ -62,7 +130,7 @@ function Signup() {
       </Box>
      </div>
 
-     <h1 className="text-white text-sm font-averia mt-6 ">Create & Connect</h1>
+     <h1 onClick={handleSignUp} className="text-white text-sm font-averia mt-6 ">Create & Connect</h1>
      <div className="h-[1px] w-[150px] bg-white "></div>
      <div className="h-[2px] w-[450px] bg-[#ffffff25] my-8"></div>
 
@@ -72,7 +140,7 @@ function Signup() {
       Already have an account ? you only need 
 connect your wallet to signin
       </h1>
-      <div className="h-[35px] w-[160px] flex justify-center items-center p-[2px] rounded-[10px] bg-gradient-to-r from-[#0057FF] via-[#14D3DB] to-[#14D3DB]">
+      <div onClick={openConnectModal} className="h-[35px] w-[160px] flex justify-center items-center p-[2px] rounded-[10px] bg-gradient-to-r from-[#0057FF] via-[#14D3DB] to-[#14D3DB]">
         <div className="h-full w-full rounded-[8px] bg-[#000000] flex justify-evenly items-center shadow inset-full shadow-white ">
           <img className="h-[20px] w-[20px]" src="/wallet2.svg" alt="" />
           <h1 className="text-sm bg-gradient-to-r from-[#0576F6] via-[#14D3DB] to-[#14D3DB] bg-clip-text text-transparent " >Connect Wallet</h1>

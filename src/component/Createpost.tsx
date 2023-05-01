@@ -7,6 +7,8 @@ import Addpost from "./Addpost";
 import Jobrole from "./Jobrole";
 import { Checkbox } from "@mui/material";
 import pink from "@mui/material/colors/pink";
+import Axios  from "@/config/AxioConfig";
+
 
 function Createpost() {
   const { setIsCreateModelVisible } = useAppContext();
@@ -20,12 +22,33 @@ function Createpost() {
       setRoleselect(roleselect.filter((item) => item !== post));
     }
   }
+
+
+  const [img, setImg] = useState<any>()
+  const [desc,setDesc] = useState("")
+
+const AddPost=async() => {
+  const response = await Axios.post("/api/post",{
+
+    postId:(Math.random()*1e18).toString(),
+    userId: (Math.random()*1e18).toString(),
+    desc:desc,
+    img:img,
+    likes:[],
+    comments:[]
+
+  })
+  const data = await response.data;
+  console.log(data)
+  
+}
+
   if (postType === "ordinary") {
     return (
       <div className=" h-[100vh] w-[100vw] text-white flex justify-center items-center fixed top-0 left-0">
-        <div className="h-[60%] w-[32%] rounded-3xl bg-[#121212]  border-[3px] border-[#2d2b2b] flex flex-col justify-start items-center mr-28 mt-8">
+        <div className="h-[60%] w-[32%] rounded-3xl bg-[#121212]  border-[2px] border-[#2d2b2b] flex flex-col justify-start items-center mr-28 mt-8">
           <div className="h-[40px] w-[100%] flex justify-center items-center relative ">
-            <h1 className="text-white text-xl font-medium    m-auto ">
+            <h1 className="text-white text-lg font-medium    m-auto ">
               Create Post
             </h1>
             <img
@@ -44,6 +67,7 @@ function Createpost() {
             </span>
           </div>
           <textarea
+          onChange={(e)=>setDesc(e.target.value)}
             style={{ resize: "none" }}
             className="bg-transparent mt-2 text-sm text-white focus:outline-none ml-3  "
             name=""
@@ -70,9 +94,9 @@ function Createpost() {
   } else if (postType === "image") {
     return (
       <div className=" h-[100vh] w-[100vw] text-white flex justify-center items-center fixed top-0 left-0">
-        <div className="h-[60%] w-[32%] rounded-3xl bg-[#121212]  border-[3px] border-[#2d2b2b] flex flex-col justify-start items-center mr-28 mt-8">
+        <div className="h-[60%] w-[32%] rounded-3xl bg-[#121212]  border-[2px] border-[#2d2b2b] flex flex-col justify-start items-center mr-28 mt-8">
           <div className="h-[40px] w-[100%] flex justify-center items-center relative ">
-            <h1 className="text-white text-xl font-medium    m-auto ">
+            <h1 className="text-white text-lg font-medium    m-auto ">
               Create Post
             </h1>
             <img
@@ -91,6 +115,7 @@ function Createpost() {
             </span>
           </div>
           <textarea
+           onChange={(e)=>setDesc(e.target.value)}
             style={{ resize: "none" }}
             className="bg-transparent mt-2 text-sm text-white focus:outline-none ml-3  "
             name=""
@@ -135,9 +160,9 @@ function Createpost() {
   } else if (postType === "work") {
     return (
       <div className=" h-[100vh] w-[100vw] text-white flex justify-center items-center fixed top-0 left-0">
-        <div className="h-[60%] w-[32%] rounded-3xl bg-[#121212]  border-[3px] border-[#2d2b2b] flex flex-col justify-between items-center mr-28 mt-8">
+        <div className="h-[60%] w-[32%] rounded-3xl bg-[#121212]  border-[2px] border-[#2d2b2b] flex flex-col justify-between items-center mr-28 mt-8">
           <div className="h-[40px] w-[100%] flex justify-center items-center relative ">
-            <h1 className="text-white text-xl font-medium    m-auto ">
+            <h1 className="text-white text-lg font-medium    m-auto ">
               Create Post
             </h1>
             <img
@@ -147,17 +172,15 @@ function Createpost() {
               alt=""
             />
           </div>
-          <div className="bg-[#ffffff4f] w-[100%] h-[1px] -mt-10"></div>
-          <div className="h-[60px] w-[100%] flex justify-start items-center ml-10 -mt-10">
+          <div className="bg-[#ffffff4f] w-[100%] h-[1px] -mt-8"></div>
+          <div className="h-[60px] w-[100%] flex justify-start items-center ml-10 -mt-8">
             <div className="h-[40px] w-[40px] rounded-full border-[2px] border-blue-800"></div>
 
             <span className="text-md text-white font-medium ml-3 ">
               Amal Raj{" "}
             </span>
           </div>
-          <h1 className="text-sm text-[#ffffff96] -ml-[60%] my-1 tracking-wider -mt-10">
-            Details about the job
-          </h1>
+          <input onChange={(e)=>setDesc(e.target.value)} className="h-[20px] w-[90%] bg-transparent text-xs  text-[#ffffff96]  my-1 tracking-wider -mt-8 focus:outline-none" type="text" placeholder="Details about the job" />
           <Jobrole
             classname=" z-[100] absolute top-[38%] left-[32%]"
             roleselect={roleselect}
@@ -166,7 +189,7 @@ function Createpost() {
 
           <Addphotos />
 
-          <div className="h-[49px] w-[90%] rounded-3xl  border-[3px] border-[#2d2b2b] bg-[#121212f8] flex items-center justify-between mb-2 ">
+          <div className="h-[49px] w-[90%] rounded-3xl  border-[2px] border-[#2d2b2b] bg-[#121212f8] flex items-center justify-between mb-2 ">
             <h1 className="text-sm text-[#ffffff96] ml-3 ">Add your post</h1>
             <div className="h-[45px] w-[230px] flex items-center justify-evenly ">
               <Addpost height={25} width={25} Image="post.svg" />

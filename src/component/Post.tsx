@@ -12,9 +12,12 @@ import { useAppContext } from "@/contexts/Appcontext";
 
 type props = {
   image?: string;
+  desc?:string,
+  comment?:string
+
 };
 
-function Post({ image }: props) {
+function Post({ image,desc,comment }: props) {
   const {postSectionType,setPostSectionType}= useAppContext()
 
   const [commenthandle, setCommenthandle] = useState([
